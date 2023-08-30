@@ -23,24 +23,24 @@ step 2:
 package main
 
 import (
-	"github.com/gobkc/timerpools"
 	"fmt"
+	"github.com/gobkc/timerpools"
 	"time"
 )
 
 func main() {
 	timerpools.SetMaxGoroutine(50000)
-	t := timerpools.NewTimerTools()
-    endSecond := 5
-	t.Subscribe(1*time.Second, func(ctx *TimeContext) {
-        if endSecond >= 0 {
-            fmt.Println(`Countdown:`, endSecond)
-            fmt.Println(`pool:`, ctx.Pid, "timerId:", ctx.TimerId, " now:", ctx.Now, " delay:", ctx.Delay)
-            endSecond--
-        } else {
-            ctx.Stop()
-            fmt.Println(`game over`)
-        }
+	t := timerpools.NewTimerPool()
+	endSecond := 5
+	t.Subscribe(1*time.Second, func(ctx *timerpools.TimeContext) {
+		if endSecond >= 0 {
+			fmt.Println(`Countdown:`, endSecond)
+			fmt.Println(`pool:`, ctx.Pid, "timerId:", ctx.TimerId, " now:", ctx.Now, " delay:", ctx.Delay)
+			endSecond--
+		} else {
+			ctx.Stop()
+			fmt.Println(`game over`)
+		}
 	})
 }
 ````
