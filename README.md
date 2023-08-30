@@ -9,6 +9,16 @@ timerpools for timer reuse in game projects
 
 ### Quick Start:
 
+step 1:
+
+````
+go get -u github.com/gobkc/timerpools
+go mod tidy
+go mod vendor
+````
+
+step 2:
+
 ````
 package main
 
