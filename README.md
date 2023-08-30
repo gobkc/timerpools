@@ -42,6 +42,7 @@ func main() {
 			fmt.Println(`game over`)
 		}
 	})
+	time.Sleep(7 * time.Second)
 }
 ````
 
